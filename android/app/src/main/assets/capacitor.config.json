@@ -1,0 +1,6 @@
+{
+	"appId": "com.example.hbicsciovue",
+	"appName": "hbicsciovue",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
