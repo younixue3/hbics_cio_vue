@@ -2,11 +2,11 @@
   <div>
     <HeaderComponent></HeaderComponent>
     <div class="bg-gradient-to-br from-blue-800 to-blue-500 h-screen">
-      <div class="text-left pt-16  text-white px-2">
-        <span class="font-light text-sm leading-3">Welcome,</span>
-        <span class="block text-xl font-bold -mt-2 w-full pr-5 truncate">Ricko Caesar Aprilla Tiaka</span>
+      <div class="text-left pt-24 text-white px-2">
+        <span class="font-light text-xl leading-3">Hi,</span>
+        <span class="block text-2xl font-light w-full pr-5 truncate">Ricko Caesar Aprilla Tiaka</span>
       </div>
-      <div class="mt-40 bg-gray-100 h-full z-10 relative">
+      <div class="mt-36 bg-gray-100 h-full z-10 relative">
         <NavbarComponent />
         <div class="pt-5">
           <router-view></router-view>

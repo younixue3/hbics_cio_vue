@@ -1,7 +1,7 @@
 <template>
-  <div class="w-8 h-full flex">
+  <div class="w-14 h-full flex">
     <div class="m-auto" @click="showdrawer" >
-      <font-awesome-icon class="text-white" icon="fa-solid fa-bars" />
+      <font-awesome-icon class="text-white text-2xl" icon="fa-solid fa-bars" />
     </div>
     <DrawerCardComponent :show="show" v-on:closedrawer="closedrawer"/>
   </div>
