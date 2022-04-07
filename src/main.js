@@ -2,17 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './index.css'
-import Vuex from "vuex";
-
-Vue.use(Vuex)
-
-const store = new Vuex.Store({
-  state: {
-    isAuthenticated: false
-  },
-  mutations: {
-  }
-})
+import store from './store/vuex';
 
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'

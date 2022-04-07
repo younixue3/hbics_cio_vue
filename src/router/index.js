@@ -4,6 +4,8 @@ import LayoutView from "@/views/LayoutView"
 import HomePage from "@/views/page/HomePage";
 import FormPage from "@/views/page/FormPage";
 import SearchPage from "@/views/page/SearchPage";
+import store from '../store/vuex';
+import LoginPage from "@/views/page/auth/LoginPage";
 
 Vue.use(VueRouter)
 
@@ -12,21 +14,28 @@ const routes = [
     path: '/',
     name: 'home',
     component: LayoutView,
-    meta: { requiresAuth: true },
     children: [
       {
         path: '',
-        component: HomePage
+        component: HomePage,
+        meta: { requiresAuth: true },
       },
       {
         path: '/form',
-        component: FormPage
+        component: FormPage,
+        meta: { requiresAuth: true },
       },
       {
         path: '/approval',
-        component: SearchPage
-      }
+        component: SearchPage,
+        meta: { requiresAuth: true },
+      },
     ]
+  },
+  {
+    path: '/login',
+    component: LoginPage,
+    meta: { requiresAuth: false },
   },
 ]
 
@@ -36,8 +45,25 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
-  else next()
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (store.state.auth.status) {
+      next()
+    } else {
+      next({
+        path: '/login',
+        query: { redirect: to.fullPath }
+      })
+    }
+  } else {
+    if (store.state.auth.status) {
+      next({
+        path: '/',
+        query: { redirect: to.fullPath }
+      })
+    } else {
+      next()
+    }
+  }
 })
 
 export default router

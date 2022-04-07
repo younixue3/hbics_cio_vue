@@ -8,7 +8,9 @@
         </div>
         <div>Pengaturan</div>
         <div>Profile</div>
-        <div>Logout</div>
+        <router-link to="/login">
+          <div @click="logout">Logout</div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -30,6 +32,10 @@ export default {
     },
     closedrawer: function () {
       this.$emit('closedrawer')
+    },
+    logout: function () {
+      this.$store.commit('authLogout')
+      this.$router.push({ name: 'login', query: { redirect: '/login' } });
     }
   },
 }

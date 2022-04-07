@@ -11,14 +11,14 @@ import HomeListCard from "@/components/Home/HomeListCard";
 
 export default {
   name: "FormPage",
+  components: {
+    FormCard,
+    HomeListCard
+  },
   data() {
     return {
 
     }
-  },
-  components: {
-    FormCard,
-    HomeListCard
   },
   methods: {
 
