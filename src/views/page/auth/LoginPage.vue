@@ -51,7 +51,8 @@ export default {
           // console.log(username)
           .then(resp => {
             // this.token = resp.data.token
-            this.$store.commit('auth', resp.data.token)
+            // console.log(resp)
+            this.$store.commit('auth', resp.data)
             // this.$router.push({ name: '', query: { redirect: '/' } });
             // console.log(resp.data.token)
             // localStorage.setItem('user-token', resp.data.token)
@@ -64,7 +65,13 @@ export default {
             // localStorage.removeItem('user-token')
             // localStorage.removeItem('group-permission')
           })
-          .finally(() => this.$router.push({ name: 'login', query: { redirect: '/path' } }))
+          .finally(() => {
+            if (this.$store.state.auth.token !== null) {
+              this.$router.push({ name: 'login', query: { redirect: '/path' } })
+            } else {
+              console.log('Akun atau Password Salah')
+            }
+          })
     },
   }
 }
