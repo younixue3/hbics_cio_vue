@@ -57,8 +57,21 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "HomeListCard"
+  name: "HomeListCard",
+  data() {
+    return {
+      datalist: []
+    }
+  },
+  mounted() {
+    axios.post('http://127.0.0.1:8000/api/approvals/cards/', {
+      token: this.$store.state.auth.token
+    })
+    .then(resp => this.datalist = resp.data)
+  }
 }
 </script>
 

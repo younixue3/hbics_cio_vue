@@ -9,7 +9,9 @@
         <div class="my-auto w-full">
           <label class="text-sm font-bold">Email</label>
           <div class="mt-2">
-            <input type="email" class="w-full border-b border-gray-200 focus:border-gray-600 focus:outline-none transition-all shrink-0" name="username" placeholder="jane.doe@example.com" v-model="username">
+            <input type="email"
+                   class="w-full border-b border-gray-200 focus:border-gray-600 focus:outline-none transition-all shrink-0"
+                   name="username" placeholder="jane.doe@example.com" v-model="username">
           </div>
         </div>
       </div>
@@ -17,11 +19,15 @@
         <div class="my-auto w-full">
           <label class="text-sm font-bold">Password</label>
           <div class="mt-2">
-            <input type="password" class="w-full border-b border-gray-200 focus:border-gray-600 focus:outline-none transition-all shrink-0" name="password" placeholder="*********" v-model="password">
+            <input type="password"
+                   class="w-full border-b border-gray-200 focus:border-gray-600 focus:outline-none transition-all shrink-0"
+                   name="password" placeholder="*********" v-model="password">
           </div>
         </div>
       </div>
-      <button class="bg-neutral-800 rounded-xl shadow-xl text-white text-xl text-center font-thin my-5" @click="login" to="/">Login</button>
+      <button class="bg-neutral-800 rounded-xl shadow-xl text-white text-xl text-center font-thin my-5" @click="login"
+              to="/">Login
+      </button>
       <div class="place-self-center justify-self-center">Forgot Your Password? Contact Support</div>
     </div>
   </div>
@@ -33,9 +39,7 @@ import axios from "axios";
 
 export default {
   name: "LoginPage",
-  components: {
-
-  },
+  components: {},
   data() {
     return {
       email: null,
@@ -48,30 +52,19 @@ export default {
         username: this.username,
         password: this.password
       })
-          // console.log(username)
-          .then(resp => {
-            // this.token = resp.data.token
-            // console.log(resp)
-            this.$store.commit('auth', resp.data)
-            // this.$router.push({ name: '', query: { redirect: '/' } });
-            // console.log(resp.data.token)
-            // localStorage.setItem('user-token', resp.data.token)
-            // localStorage.setItem('group-permission', resp.data.level)
-            // this.$router.push("/")
-            // localStorage.setItem('role', resp.data.token)
-          })
-          .catch(e => {
-            console.log(e)
-            // localStorage.removeItem('user-token')
-            // localStorage.removeItem('group-permission')
-          })
-          .finally(() => {
-            if (this.$store.state.auth.token !== null) {
-              this.$router.push({ name: 'login', query: { redirect: '/path' } })
-            } else {
-              console.log('Akun atau Password Salah')
-            }
-          })
+      .then(resp => {
+        this.$store.commit('auth', resp.data)
+      })
+      .catch(e => {
+        console.log(e)
+      })
+      .finally(() => {
+        if (this.$store.state.auth.token !== null) {
+          this.$router.push({name: 'login', query: {redirect: '/path'}})
+        } else {
+          console.log('Akun atau Password Salah')
+        }
+      })
     },
   }
 }
