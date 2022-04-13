@@ -7,7 +7,7 @@
         <span class="block text-2xl font-light w-full pr-5 truncate">Ricko Caesar Aprilla Tiaka</span>
       </div>
       <div class="absolute top-72 backdrop-blur pt-10 h-full w-full ">
-        <div class="bg-gray-100">
+        <div class="bg-white">
           <NavbarComponent />
           <div class="pt-5">
             <router-view></router-view>

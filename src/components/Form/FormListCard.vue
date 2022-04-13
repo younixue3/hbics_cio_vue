@@ -11,8 +11,8 @@
         <div class="text-sm font-light text-gray-400 flex"><span class="my-auto">by</span><span class="bg-gray-400 mx-1 p-0.5 rounded-full flex"><img class="rounded-full w-5 h-5 object-cover m-auto" src="@/assets/stock_photo_rdev/feeling-way-too-cool-for-this-place.jpg"><span class="text-base text-white m-auto mx-1">Mr Is</span></span></div>
 
       </div>
-      <div class="w-20 flex" v-if="item.status === 'AC'"><font-awesome-icon class="text-4xl text-emerald-500 m-auto" icon="fa-solid fa-circle-check"/></div>
-      <div class="w-20 flex" v-if="item.status === 'RJ'"><font-awesome-icon class="text-4xl text-red-500 m-auto" icon="fa-solid fa-circle-xmark"/></div>
+      <div class="w-20 flex"><font-awesome-icon class="text-4xl text-emerald-500 m-auto" icon="fa-solid fa-circle-check" v-if="item.status === 'AC'"/></div>
+      <div class="w-20 flex"><font-awesome-icon class="text-4xl text-red-500 m-auto" icon="fa-solid fa-circle-xmark"  v-if="item.status === 'RJ'"/></div>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@
 import axios from "axios";
 
 export default {
-  name: "HomeListCard",
+  name: "FormListCard",
   data() {
     return {
       datalist: []
@@ -29,10 +29,11 @@ export default {
   },
   mounted() {
     this.getdatalist()
+    this.getdate()
   },
   methods: {
     getdatalist : function () {
-      axios.post('http://127.0.0.1:8000/api/approvals/permissions/', {
+      axios.post('http://127.0.0.1:8000/api/approvals/permissions_form/', {
         token: this.$store.state.auth.token
       })
           .then(resp => this.datalist = resp.data)
