@@ -9,7 +9,11 @@ const state = {
         status: false,
         token: null,
         group: null,
-        superuser: false
+        superuser: false,
+    },
+    modal: {
+        status: false,
+        url: null
     }
 }
 

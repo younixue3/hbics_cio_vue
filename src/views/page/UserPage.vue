@@ -1,5 +1,6 @@
 <template>
   <div>
+    <ModalComponent />
     <div class="w-full bg-blue-500 text-left text-3xl px-3 py-3 text-white">
       <button><font-awesome-icon icon="fa-solid fa-arrow-left" @click="$router.back()" /></button>
     </div>
@@ -13,13 +14,15 @@
 <script>
 import LastPermission from "@/components/Search/user_page/LastPermission";
 import ListPermission from "@/components/Search/user_page/ListPermission";
+import ModalComponent from "@/components/widget/ModalComponent";
 
 export default {
 
   name: "UserPage",
   components: {
     LastPermission,
-    ListPermission
+    ListPermission,
+    ModalComponent
   },
   data () {
     return {

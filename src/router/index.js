@@ -7,6 +7,7 @@ import SearchPage from "@/views/page/SearchPage";
 import store from '../store/vuex';
 import LoginPage from "@/views/page/auth/LoginPage";
 import UserPage from "@/views/page/UserPage";
+import OutputPage from "@/components/Search/OutputPage";
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,11 @@ const routes = [
   {
     path: '/staff_page/:user_id',
     component: UserPage,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/output',
+    component: OutputPage,
     meta: { requiresAuth: true }
   },
   {

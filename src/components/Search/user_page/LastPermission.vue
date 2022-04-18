@@ -16,7 +16,7 @@
       <div class="flex rounded-3xl bg-emerald-300 h-8 px-2 font-bold mt-auto" v-if="datalist.status === 'AC'"><span class="m-auto">Diterima</span></div>
       <div class="flex rounded-3xl bg-red-300 h-8 px-2 font-bold mt-auto" v-if="datalist.status === 'RJ'"><span class="m-auto">Ditolak</span></div>
       <div class="flex rounded-md text-center text-white text-4xl mt-auto hover:bg-white hover:bg-opacity-20 w-12 h-12 transition-all ease-in-out duration-300">
-        <font-awesome-icon class="m-auto" icon="fa-solid fa-qrcode" />
+        <font-awesome-icon class="m-auto" icon="fa-solid fa-angle-up" @click="approvalModal" v-if="datalist.status == 'NO'" />
       </div>
     </div>
   </div>
@@ -30,7 +30,8 @@ export default {
   data() {
     return {
       datalist: [],
-      slug: this.$route.params.user_id
+      slug: this.$route.params.user_id,
+      modal: false
     }
   },
   props: ['url'],
@@ -39,10 +40,19 @@ export default {
   },
   methods: {
     getdatarecent : function () {
-      axios.post('http://127.0.0.1:8000/api/approvals/search_last_detail_staff/'+this.slug, {
+      axios.post('http://127.0.0.1:8000/api/approvals/search_last_detail_staff/' + this.slug, {
         token: this.$store.state.auth.token
       })
           .then(resp => this.datalist = resp.data[0])
+    },
+    approvalModal: function () {
+      this.$store.state.modal.status = this.$store.state.modal.status !== true
+      this.$store.state.modal.url = this.datalist.id
+      // if (this.$store.state.modal.url == null) {
+      //   this.$store.state.modal.url = this.datalist.id
+      // } else {
+      //   this.$store.state.modal.url = null
+      // }
     }
   }
 }
