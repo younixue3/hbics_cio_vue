@@ -6,6 +6,7 @@ import FormPage from "@/views/page/FormPage";
 import SearchPage from "@/views/page/SearchPage";
 import store from '../store/vuex';
 import LoginPage from "@/views/page/auth/LoginPage";
+import UserPage from "@/views/page/UserPage";
 
 Vue.use(VueRouter)
 
@@ -31,6 +32,11 @@ const routes = [
         meta: { requiresAuth: true },
       },
     ]
+  },
+  {
+    path: '/staff_page/:user_id',
+    component: UserPage,
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',

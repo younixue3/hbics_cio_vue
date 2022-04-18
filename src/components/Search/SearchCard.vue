@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-h-screen relative">
+  <div class="min-h-screen w-full relative">
     <div class="absolute z-50 w-full h-full flex" v-if="this.$store.state.auth.superuser !== true || $store.state.auth.group.includes('Manager') || $store.state.auth.group.includes('Yayasan')" :class="this.$store.state.auth.superuser === true || $store.state.auth.group.includes('Manager') || $store.state.auth.group.includes('Yayasan') ? '' : 'backdrop-blur-sm'">
       <div class="m-auto font-bold">
         Anda tidak memiliki akses ini
@@ -9,11 +9,11 @@
       <div class="rounded-3xl bg-gray-100 p-5">
         <div class="flex h-8 hover:ring-2 rounded-xl">
           <input type="text"
-                 class="w-full h-full bg-white p-1 rounded-l-xl text-lg focus:outline-none transition-all ease-in-out" placeholder="Search">
-          <button class="h-full w-10 bg-gray-200 rounded-r-xl"><font-awesome-icon icon="fa-solid fa-magnifying-glass" /></button>
+                 class="w-full h-full bg-white p-1 rounded-l-xl text-lg focus:outline-none transition-all ease-in-out" placeholder="Search" v-model="searchcol">
+          <button class="h-full w-10 bg-gray-200 rounded-r-xl" @click="getdatalist"><font-awesome-icon icon="fa-solid fa-magnifying-glass" /></button>
         </div>
       </div>
-      <ListSearch v-for="(item, index) in datalist" v-bind:key="index" v-bind:url="item.permission_uuid[0]"/>
+      <ListSearch v-for="(item, index) in datalist" v-bind:key="index" v-bind:url="item.permission_uuid[item.permission_uuid.length - 1]" v-bind:user="item.user_uuid" />
     </div>
   </div>
 </template>
@@ -30,7 +30,8 @@ export default {
   },
   data() {
     return {
-      datalist: null
+      datalist: null,
+      searchcol: null,
     }
   },
   mounted() {
@@ -38,9 +39,11 @@ export default {
   },
   methods: {
     getdatalist : function () {
+      this.datalist = null
       axios.post('http://127.0.0.1:8000/api/approvals/permission_search/', {
         token: this.$store.state.auth.token,
-        group: this.$store.state.auth.group
+        group: this.$store.state.auth.group,
+        search: this.searchcol
       })
           .then(resp => this.datalist = resp.data)
           // .then(resp => console.log(resp.data[0].permission_uuid))
