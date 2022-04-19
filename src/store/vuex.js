@@ -10,10 +10,15 @@ const state = {
         token: null,
         group: null,
         superuser: false,
+        name: null
     },
     modal: {
         status: false,
         url: null
+    },
+    api_gateway: 'http://54.236.62.247/',
+    output: {
+        status: null
     }
 }
 
@@ -27,11 +32,13 @@ const store = new Vuex.Store({
                 state.auth.token = data.token
                 state.auth.group = data.group
                 state.auth.superuser = data.superuser
+                state.auth.name = data.name
             } else {
                 state.auth.status = false
                 state.auth.token = null
                 state.auth.group = null
                 state.auth.superuser = false
+                state.auth.name = null
             }
         },
         authLogout (state) {
@@ -39,6 +46,7 @@ const store = new Vuex.Store({
             state.auth.token = null
             state.auth.group = null
             state.auth.superuser = false
+            state.auth.name = null
         }
     },
     actions: {},

@@ -40,7 +40,7 @@ export default {
   methods: {
     getdatalist : function () {
       this.datalist = null
-      axios.post('http://127.0.0.1:8000/api/approvals/permission_search/', {
+      axios.post('http://54.236.62.247/api/approvals/permission_search/', {
         token: this.$store.state.auth.token,
         group: this.$store.state.auth.group,
         search: this.searchcol

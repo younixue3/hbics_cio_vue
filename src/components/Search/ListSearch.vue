@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     getdata: function () {
-      axios.post('http://127.0.0.1:8000/api/approvals/permission_search/'+this.$props.url, {
+      axios.post('http://54.236.62.247/api/approvals/permission_search/'+this.$props.url, {
         user: this.$props.user
       })
           .then(resp => this.data = resp.data)

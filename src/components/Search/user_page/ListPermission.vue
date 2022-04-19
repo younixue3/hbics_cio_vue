@@ -8,8 +8,7 @@
             <span class="block leading-3">{{item.created_at}}</span>
           </p>
         </div>
-        <div class="text-sm font-light text-gray-400 flex"><span class="my-auto">by</span><span class="bg-gray-400 mx-1 p-0.5 rounded-full flex"><img class="rounded-full w-5 h-5 object-cover m-auto" src="@/assets/stock_photo_rdev/feeling-way-too-cool-for-this-place.jpg"><span class="text-base text-white m-auto mx-1">Mr Is</span></span></div>
-
+        <approval-by v-bind:leader="item.appoval_by" />
       </div>
       <div class="w-20 flex" v-if="item.status === 'AC'"><font-awesome-icon class="text-4xl text-emerald-500 m-auto" icon="fa-solid fa-circle-check"/></div>
       <div class="w-20 flex" v-if="item.status === 'RJ'"><font-awesome-icon class="text-4xl text-red-500 m-auto" icon="fa-solid fa-circle-xmark"/></div>
@@ -19,9 +18,13 @@
 
 <script>
 import axios from "axios";
+import approvalBy from "@/components/Home/ApprovalBy";
 
 export default {
   name: "ListPermission",
+  components: {
+    approvalBy
+  },
   data() {
     return {
       datalist: [],

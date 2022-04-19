@@ -48,13 +48,11 @@ export default {
   },
   methods: {
     login() {
-      axios.post('http://127.0.0.1:8000/api/auth', {
+      axios.post("http://54.236.62.247/api/auth", {
         username: this.username,
         password: this.password
       })
-      .then(resp => {
-        this.$store.commit('auth', resp.data)
-      })
+      .then(resp => alert(resp))
       .catch(e => {
         console.log(e)
       })

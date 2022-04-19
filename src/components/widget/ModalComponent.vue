@@ -30,19 +30,28 @@ export default {
       this.$store.state.modal.status = this.$store.state.modal.status != true;
     },
     approved: function () {
-      axios.put('http://127.0.0.1:8000/api/approvals/approval_post/' + this.$store.state.modal.url,
-          { status: 'AC'}
+      axios.put(this.$store.state.api_gateway + 'api/approvals/approval_post/' + this.$store.state.modal.url,
+          {
+            status: 'AC',
+            token: this.$store.state.auth.token
+          }
       )
       .then(resp => console.log(resp))
       this.$store.state.modal.status = this.$store.state.modal.status != true;
-      this.$router.push()
+      this.$store.state.output.status = 'accept'
+      this.$router.push('/output')
     },
     rejected: function () {
-      axios.put('http://127.0.0.1:8000/api/approvals/approval_post/' + this.$store.state.modal.url,
-          { status: 'RJ'}
+      axios.put('http://54.236.62.247/api/approvals/approval_post/' + this.$store.state.modal.url,
+          {
+            status: 'RJ',
+            token: this.$store.state.auth.token
+          }
       )
       .then(resp => console.log(resp))
       this.$store.state.modal.status = this.$store.state.modal.status != true;
+      this.$store.state.output.status = 'reject'
+      this.$router.push('/output')
     }
   }
 }
