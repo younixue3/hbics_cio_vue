@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     getdatalist : function () {
-      axios.post('http://127.0.0.1:8000/api/approvals/search_detail_staff/'+this.slug, {
+      axios.post(process.env.VUE_APP_BASE_URL + '/api/approvals/search_detail_staff/'+this.slug, {
         token: this.$store.state.auth.token
       })
           .then(resp => this.datalist = resp.data)

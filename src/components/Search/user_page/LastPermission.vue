@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     getdatarecent : function () {
-      axios.post('http://54.236.62.247/api/approvals/search_last_detail_staff/' + this.slug, {
+      axios.post(process.env.VUE_APP_BASE_URL + '/api/approvals/search_last_detail_staff/' + this.slug, {
         token: this.$store.state.auth.token
       })
           .then(resp => this.datalist = resp.data[0])

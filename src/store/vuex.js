@@ -16,7 +16,10 @@ const state = {
         status: false,
         url: null
     },
-    api_gateway: 'http://54.236.62.247/',
+    api_gateway: "127.0.0.1:8000/",
+    qrcode: {
+        url: null
+    },
     output: {
         status: null
     }

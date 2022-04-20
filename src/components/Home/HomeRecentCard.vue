@@ -16,7 +16,7 @@
       <div class="flex rounded-3xl bg-emerald-300 h-8 px-2 font-bold mt-auto" v-if="datalist.data[0].status === 'AC'"><span class="m-auto">Diterima</span></div>
       <div class="flex rounded-3xl bg-red-300 h-8 px-2 font-bold mt-auto" v-if="datalist.data[0].status === 'RJ'"><span class="m-auto">Ditolak</span></div>
       <div class="flex rounded-md text-center text-white text-4xl mt-auto hover:bg-white hover:bg-opacity-20 w-12 h-12 transition-all ease-in-out duration-300">
-        <font-awesome-icon class="m-auto" icon="fa-solid fa-qrcode" />
+        <font-awesome-icon class="m-auto" icon="fa-solid fa-qrcode" @click="scanPage" />
       </div>
     </div>
   </div>
@@ -37,10 +37,14 @@ export default {
   },
   methods: {
     getdatarecent : function () {
-      axios.post('http://54.236.62.247/api/approvals/permission_recent/', {
+      axios.post(process.env.VUE_APP_BASE_URL + '/api/approvals/permission_recent/', {
         token: this.$store.state.auth.token
       })
           .then(resp => this.datalist = resp.data)
+    },
+    scanPage: function () {
+      this.$store.state.qrcode.url = this.datalist.data[0].id
+      this.$router.push('/scan')
     }
   }
 }

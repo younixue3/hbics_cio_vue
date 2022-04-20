@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     getdatalist : function () {
-      axios.post('http://54.236.62.247/api/approvals/get_leader/', {
+      axios.post(process.env.VUE_APP_BASE_URL + '/api/approvals/get_leader/', {
         token: this.$store.state.auth.token,
         leader: this.$props.leader
       })

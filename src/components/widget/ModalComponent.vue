@@ -42,7 +42,7 @@ export default {
       this.$router.push('/output')
     },
     rejected: function () {
-      axios.put('http://54.236.62.247/api/approvals/approval_post/' + this.$store.state.modal.url,
+      axios.put(process.env.VUE_APP_BASE_URL + '/api/approvals/approval_post/' + this.$store.state.modal.url,
           {
             status: 'RJ',
             token: this.$store.state.auth.token

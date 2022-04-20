@@ -48,11 +48,14 @@ export default {
   },
   methods: {
     login() {
-      axios.post("http://54.236.62.247/api/auth", {
+      console.log(process.env.VUE_APP_BASE_URL + "/api/auth")
+      axios.post( process.env.VUE_APP_BASE_URL + "/api/auth", {
         username: this.username,
         password: this.password
       })
-      .then(resp => alert(resp))
+      .then(resp => {
+        this.$store.commit('auth', resp.data)
+      })
       .catch(e => {
         console.log(e)
       })

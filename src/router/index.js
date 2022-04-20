@@ -8,6 +8,7 @@ import store from '../store/vuex';
 import LoginPage from "@/views/page/auth/LoginPage";
 import UserPage from "@/views/page/UserPage";
 import OutputPage from "@/components/Search/OutputPage";
+import ScanQrPage from "@/components/Home/qrcode/ScanQrPage";
 
 Vue.use(VueRouter)
 
@@ -42,6 +43,11 @@ const routes = [
   {
     path: '/output',
     component: OutputPage,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/scan',
+    component: ScanQrPage,
     meta: { requiresAuth: true }
   },
   {

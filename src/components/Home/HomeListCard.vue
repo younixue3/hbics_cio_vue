@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     getdatalist : function () {
-      axios.post('http://54.236.62.247/api/approvals/permissions/', {
+      axios.post(process.env.VUE_APP_BASE_URL + '/api/approvals/permissions/', {
         token: this.$store.state.auth.token
       })
           .then(resp => this.datalist = resp.data)

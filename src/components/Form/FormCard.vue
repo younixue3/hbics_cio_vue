@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     insertdata: function () {
-      axios.post('http://54.236.62.247/api/approvals/permission/apply', {
+      axios.post(process.env.VUE_APP_BASE_URL + '/api/approvals/permission/apply', {
         token: this.$store.state.auth.token,
         description: this.description
       },
