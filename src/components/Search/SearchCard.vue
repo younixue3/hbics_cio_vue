@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen w-full relative">
-    <div class="absolute z-50 w-full h-full flex" v-if="this.$store.state.auth.superuser !== true || $store.state.auth.group.includes('Manager') || $store.state.auth.group.includes('Yayasan')" :class="this.$store.state.auth.superuser === true || $store.state.auth.group.includes('Manager') || $store.state.auth.group.includes('Yayasan') ? '' : 'backdrop-blur-sm'">
+    <div class="absolute z-50 w-full h-full flex" v-if="validate == false" :class=" validate ? '' : 'backdrop-blur-sm'">
       <div class="m-auto font-bold">
         Anda tidak memiliki akses ini
       </div>
@@ -32,10 +32,20 @@ export default {
     return {
       datalist: null,
       searchcol: null,
+      validate: false
     }
   },
   mounted() {
+    this.$store.state.auth.superuser
     this.getdatalist()
+    this.$store.state.auth.group
+    for (var item in this.$store.state.auth.group) {
+
+      if (this.$store.state.auth.group[item].name === 'Manager' || this.$store.state.auth.group[item].name === 'Yayasan') {
+        this.validate = true
+        break
+      } else this.validate = this.$store.state.auth.superuser === true;
+    }
   },
   methods: {
     getdatalist : function () {

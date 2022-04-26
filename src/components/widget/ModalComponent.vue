@@ -30,7 +30,7 @@ export default {
       this.$store.state.modal.status = this.$store.state.modal.status != true;
     },
     approved: function () {
-      axios.put(this.$store.state.api_gateway + 'api/approvals/approval_post/' + this.$store.state.modal.url,
+      axios.put(process.env.VUE_APP_BASE_URL + '/api/approvals/approval_post/' + this.$store.state.modal.url,
           {
             status: 'AC',
             token: this.$store.state.auth.token
