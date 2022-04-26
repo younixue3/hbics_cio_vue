@@ -39,4 +39,16 @@
     <!-- Permissions -->
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- First, request the camera permission -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!--- IMPORTANT PART:- Include all the "features" under the camera permission,- and mark them all as optional.-->
+    <uses-feature
+            android:name="android.hardware.camera"
+            android:required="false" />
+    <uses-feature
+            android:name="android.hardware.camera.autofocus"
+            android:required="false" />
 </manifest>

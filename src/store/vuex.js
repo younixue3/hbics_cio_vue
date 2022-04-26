@@ -18,7 +18,9 @@ const state = {
     },
     api_gateway: "127.0.0.1:8000/",
     qrcode: {
-        url: null
+        url: null,
+        massage: {
+        }
     },
     output: {
         status: null

@@ -16,6 +16,7 @@
 
 <script>
 import axios from "axios";
+import router from "@/router";
 
 export default {
   name: "FormCard",
@@ -39,6 +40,7 @@ export default {
         }
       )
       .then(resp => console.log(resp.data))
+      .finally(() => router.push('/'))
     }
   }
 }
