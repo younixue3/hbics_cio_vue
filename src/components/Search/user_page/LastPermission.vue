@@ -6,7 +6,7 @@
         <span class="block font-semibold text-3xl leading-6">{{datalist.description}}</span>
       </p>
       <div>
-        <span class="bg-white p-0.5 h-10 rounded-full flex"><img class="rounded-full w-8 h-8 object-cover m-auto" src="@/assets/stock_photo_rdev/feeling-way-too-cool-for-this-place.jpg"><span class="m-auto mx-1 truncate">Mr Is</span></span>
+        <span class="bg-white p-0.5 h-10 rounded-full flex"><span class="m-auto mx-1 truncate">Mr Is</span></span>
       </div>
     </div>
     <div class="flex justify-between">
