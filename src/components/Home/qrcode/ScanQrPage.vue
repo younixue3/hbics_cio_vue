@@ -12,7 +12,6 @@
 
 <script>
 import { QrcodeStream } from "vue-qrcode-reader"
-import { Camera } from '@capacitor/camera';
 import axios from "axios";
 import router from "@/router";
 
@@ -25,10 +24,6 @@ export default {
   },
   components: {
     QrcodeStream
-  },
-  created() {
-    Camera.requestPermissions();
-    Camera.getPhoto()
   },
   methods: {
     onDecode (result) {
