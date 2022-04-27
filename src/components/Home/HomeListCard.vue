@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-3xl bg-gray-100 h-[35rem] grid grid-rows-5 gap-3 p-3">
+  <div class="rounded-3xl bg-gray-100 dark:bg-gray-500 h-[35rem] grid grid-rows-5 gap-3 p-3">
     <div class="flex rounded-2xl bg-gray-50 py-3 pr-1 pl-2" v-for="(item, index) in this.datalist" v-bind:key="index">
       <div class="w-full grid grid-cols-1 gap-y-2 text-left">
         <div>

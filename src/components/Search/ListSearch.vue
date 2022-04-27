@@ -1,11 +1,11 @@
 <template>
-  <router-link v-bind:to="/staff_page/ + user" class="rounded-3xl grid grid-cols-1 gap-3 bg-gray-100 p-5">
-    <div class="flex rounded-2xl bg-white py-3 pr-1 pl-2">
+  <router-link v-bind:to="/staff_page/ + user" class="rounded-3xl grid grid-cols-1 gap-3 bg-gray-100 dark:bg-gray-500 p-5">
+    <div class="flex rounded-2xl bg-white dark:bg-gray-400 py-3 pr-1 pl-2">
       <div class="w-full grid grid-cols-1 gap-y-2 text-left">
         <div class="flex">
           <img class="rounded-full w-12 h-12 object-cover my-auto"
                src="@/assets/stock_photo_rdev/feeling-way-too-cool-for-this-place.jpg">
-          <span class="text-xl font-bold mx-2 my-auto">{{data.user.first_name + ' ' + data.user.last_name}}</span>
+          <span class="text-xl font-bold mx-2 my-auto dark:text-white">{{data.user.first_name + ' ' + data.user.last_name}}</span>
         </div>
       </div>
       <div class="w-20 flex" v-if="data.permission.status === 'AC'"><font-awesome-icon class="text-4xl text-emerald-500 m-auto" icon="fa-solid fa-circle-check"/></div>

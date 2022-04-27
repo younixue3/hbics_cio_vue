@@ -1,5 +1,5 @@
 <template>
-  <div class="h-52 rounded-3xl bg-gradient-to-br from-blue-700 to-blue-500 grid grid-cols-1 p-3">
+  <div class="h-52 rounded-3xl bg-gradient-to-br from-blue-700 to-blue-500 dark:from-gray-500 dark:to-gray-400 grid grid-cols-1 p-3">
     <div class="flex justify-between">
       <p class="text-left text-white">
         <span class="font-light text-lg leading-3">Recent Permission</span>

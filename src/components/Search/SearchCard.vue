@@ -6,11 +6,11 @@
       </div>
     </div>
     <div class="static grid grid-cols-1 h-full gap-5">
-      <div class="rounded-3xl bg-gray-100 p-5">
+      <div class="rounded-3xl bg-gray-100 dark:bg-gray-500 p-5">
         <div class="flex h-8 hover:ring-2 rounded-xl">
           <input type="text"
-                 class="w-full h-full bg-white p-1 rounded-l-xl text-lg focus:outline-none transition-all ease-in-out" placeholder="Search" v-model="searchcol">
-          <button class="h-full w-10 bg-gray-200 rounded-r-xl" @click="getdatalist"><font-awesome-icon icon="fa-solid fa-magnifying-glass" /></button>
+                 class="w-full h-full bg-white dark:bg-gray-200 p-1 rounded-l-xl text-lg focus:outline-none transition-all ease-in-out" placeholder="Search" v-model="searchcol">
+          <button class="h-full w-10 bg-gray-200 dark:bg-gray-100 rounded-r-xl" @click="getdatalist"><font-awesome-icon icon="fa-solid fa-magnifying-glass" /></button>
         </div>
       </div>
       <ListSearch v-for="(item, index) in datalist" v-bind:key="index" v-bind:url="item.permission_uuid[item.permission_uuid.length - 1]" v-bind:user="item.user_uuid" />

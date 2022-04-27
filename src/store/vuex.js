@@ -24,7 +24,11 @@ const state = {
     },
     output: {
         status: null
-    }
+    },
+    notification: {
+        active: false
+    },
+    darkmode: false
 }
 
 const store = new Vuex.Store({
@@ -52,6 +56,17 @@ const store = new Vuex.Store({
             state.auth.group = null
             state.auth.superuser = false
             state.auth.name = null
+        },
+        darkmode (state) {
+            if (state.darkmode === true) {
+                state.darkmode = false
+                document.documentElement.classList.remove('dark')
+                document.documentElement.classList.remove('bg-gray-400')
+            } else {
+                state.darkmode = true
+                document.documentElement.classList.add('dark')
+                document.documentElement.classList.add('bg-gray-400')
+            }
         }
     },
     actions: {},
