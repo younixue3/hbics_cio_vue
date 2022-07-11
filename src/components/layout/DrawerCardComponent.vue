@@ -9,6 +9,9 @@
         <router-link class="p-5 text-lg" to="/settings">
           <div>Pengaturan</div>
         </router-link>
+        <router-link class="p-5 text-lg" to="/get-location">
+          <div>Get Location</div>
+        </router-link>
         <router-link class="p-5 text-lg" to="/login">
           <div @click="logout">Logout</div>
         </router-link>

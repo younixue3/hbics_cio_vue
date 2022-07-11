@@ -11,6 +11,7 @@ import OutputPage from "@/components/Search/OutputPage";
 import ScanQrPage from "@/components/Home/qrcode/ScanQrPage";
 import OutputQrPage from "@/components/Home/qrcode/OutputQrPage";
 import SettingsPage from "@/views/page/settings/SettingsPage";
+import GeolocationPage from "@/views/page/GeolocationPage";
 
 Vue.use(VueRouter)
 
@@ -63,6 +64,10 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
+    path: '/get-location',
+    component: GeolocationPage
+  },
+  {
     path: '/login',
     component: LoginPage,
     meta: { requiresAuth: false },
@@ -71,6 +76,7 @@ const routes = [
 
 const router = new VueRouter({
   routes,
+  mode: 'history',
   linkActiveClass: 'is-active'
 })
 
