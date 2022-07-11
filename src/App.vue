@@ -35,7 +35,7 @@ nav a.router-link-exact-active {
 export default {
   components: {},
   created() {
-    if (this.$store.state.darkmode || (window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (this.$store.state.darkmode) {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
